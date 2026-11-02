@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML</title>
+</head>
+<body>
+    <h1> Fetchng products by id </h1>
+    <form id="productform">
+        <label for="product">Product Name</label>
+        <input id="productName" type="text" name="productName">
+        <button type="submit">Add Product</button>
+    </form>
+    
+    <script>
+        document.getElementById('productform').addEventListener('submit', (e) => {
+    e.preventDefault();
+    console.log(document.getElementById('productName').value);
+  });
+    </script>
+</body>
+</html>
