@@ -199,3 +199,31 @@ app.use("/courses", courseRoutes);
 | **Example URL** | `/courses/42` | `/courses?sort=asc&limit=10` |
 | **Definition** | Declared with a colon `:` in the route string | Automatically parsed by Express; no special path syntax required |
 | **Combined Usage**| `/courses/:id?name=React` captures `req.params.id` as `42` and `req.query.name` as `React` |
+
+---
+
+## 🛡️ Error Handling & Fallback 404 Middleware
+
+Express processes middleware and route handlers sequentially from top to bottom. If an incoming request does not match `/`, `/students/*`, or `/courses/*`, it falls through to the final middleware handler in `index1_task.js`:
+
+```javascript
+app.use((req, res) => {
+  res.status(404).send("PAGE NOT FOUND");
+});
+```
+
+### Key Principles:
+1. **Placement Matters**: The 404 catch-all must be registered **after** all valid routes. Placing it before would intercept all incoming requests.
+2. **Explicit Status Code**: Uses `res.status(404)` so client applications (and automated test suites) receive a standard HTTP 404 response rather than 200 OK.
+3. **Testing Unmatched Routes**:
+   ```bash
+   curl -i "http://localhost:4000/unknown-path"
+   ```
+   **Response Header & Body**:
+   ```http
+   HTTP/1.1 404 Not Found
+   Content-Type: text/html; charset=utf-8
+   Content-Length: 14
+
+   PAGE NOT FOUND
+   ```
