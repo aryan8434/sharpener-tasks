@@ -68,3 +68,24 @@ task_11/
    node -v
    npm list express
    ```
+
+---
+
+## ▶️ Running the Server
+
+Start the application with Node:
+```bash
+node index1_task.js
+```
+
+Or run with `nodemon` for automatic live-reloading during development:
+```bash
+npx nodemon index1_task.js
+```
+
+### Expected Terminal Output:
+```text
+Server is running on http://localhost:4000
+```
+
+Once running, the server listens for HTTP requests on `http://localhost:4000`. You can test endpoints using a web browser, Postman, or terminal `curl`.
