@@ -89,3 +89,51 @@ Server is running on http://localhost:4000
 ```
 
 Once running, the server listens for HTTP requests on `http://localhost:4000`. You can test endpoints using a web browser, Postman, or terminal `curl`.
+
+---
+
+## 🧑‍🎓 Student API Endpoints (`routes/student.js`)
+
+The student router is mounted at prefix `/students` in `index1_task.js`:
+```javascript
+const studentRoutes = require("./routes/student");
+app.use("/students", studentRoutes);
+```
+
+### 1. List All Students with Query Filter
+- **Method**: `GET`
+- **Path**: `/students/`
+- **Query Parameter**: `name` (optional)
+- **Code Implementation**:
+  ```javascript
+  router.get("/", (req, res) => {
+    const name = req.query;
+    res.send(`List all students: ${name}`);
+  });
+  ```
+- **Example Request**:
+  ```bash
+  curl "http://localhost:4000/students?name=Aryan"
+  ```
+
+### 2. Get Student by ID with Name Query
+- **Method**: `GET`
+- **Path**: `/students/:id`
+- **Route Parameter (`req.params`)**: `id` (e.g. `101`)
+- **Query Parameter (`req.query`)**: `name` (e.g. `Aryan`)
+- **Code Implementation**:
+  ```javascript
+  router.get("/:id", (req, res) => {
+    const studentId = req.params.id;
+    const name = req.query.name;
+    res.send(`Student ID: ${studentId}, Name: ${name}`);
+  });
+  ```
+- **Example Request**:
+  ```bash
+  curl "http://localhost:4000/students/101?name=Aryan"
+  ```
+- **Expected Output**:
+  ```text
+  Student ID: 101, Name: Aryan
+  ```
