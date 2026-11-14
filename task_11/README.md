@@ -137,3 +137,52 @@ app.use("/students", studentRoutes);
   ```text
   Student ID: 101, Name: Aryan
   ```
+
+---
+
+## 📚 Courses API Endpoints (`routes/courses.js`)
+
+The courses router is mounted at prefix `/courses` in `index1_task.js`:
+```javascript
+const courseRoutes = require("./routes/courses");
+app.use("/courses", courseRoutes);
+```
+
+### 1. List All Courses with Query
+- **Method**: `GET`
+- **Path**: `/courses/`
+- **Query Parameter**: `name` (optional filter)
+- **Code Implementation**:
+  ```javascript
+  router.get("/", (req, res) => {
+    const name = req.query;
+    res.send(`List all courses: ${name}`);
+  });
+  ```
+- **Example Request**:
+  ```bash
+  curl "http://localhost:4000/courses?name=Backend"
+  ```
+
+### 2. Get Course Details by ID, Name, and Description
+- **Method**: `GET`
+- **Path**: `/courses/:id`
+- **Route Parameter (`req.params`)**: `id` (dynamic course identifier)
+- **Query Parameters (`req.query`)**: `name`, `description`
+- **Code Implementation**:
+  ```javascript
+  router.get("/:id", (req, res) => {
+    const id = req.params.id;
+    const name = req.query.name;
+    const description = req.query.description;
+    res.send(`Course ID: ${id}, Name: ${name}, Description: ${description}`);
+  });
+  ```
+- **Example Request**:
+  ```bash
+  curl "http://localhost:4000/courses/502?name=ExpressMastery&description=LearnRoutingInExpress"
+  ```
+- **Expected Output**:
+  ```text
+  Course ID: 502, Name: ExpressMastery, Description: LearnRoutingInExpress
+  ```
