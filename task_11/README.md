@@ -23,3 +23,21 @@ In modern web development with Express.js, placing all endpoints in a single fil
 - **Query Parameter Extraction**: Reading key-value pairs appended after `?` (e.g., `?name=John&description=NodeJS`).
 - **Middleware Chaining**: Enforcing strict top-to-bottom route evaluation order.
 - **Fallback 404 Middleware**: Returning HTTP status `404` with a readable error message for undefined routes.
+
+---
+
+## 📦 Project Structure
+
+```
+task_11/
+├── index1_task.js       # Main server file: configures Express app, mounts routers, listens on port 4000
+├── routes/
+│   ├── student.js       # Router module for /students endpoints and parameter parsing
+│   └── courses.js       # Router module for /courses endpoints and query parameter parsing
+└── README.md            # Comprehensive project documentation
+```
+
+### Module Responsibilities:
+- **`index1_task.js`**: Initializes Express instance, binds root path `/`, imports and mounts `./routes/student` at `/students` and `./routes/courses` at `/courses`, declares fallback 404 middleware, and starts HTTP server on port 4000.
+- **`routes/student.js`**: Exports an `express.Router()` handling student list retrieval and individual student lookups by dynamic ID.
+- **`routes/courses.js`**: Exports an `express.Router()` handling course catalog retrieval and individual course queries with description details.
