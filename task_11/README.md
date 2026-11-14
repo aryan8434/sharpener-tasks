@@ -12,3 +12,14 @@ In modern web development with Express.js, placing all endpoints in a single fil
 3. **Dynamic Route Parameters**: Capturing path variables from URLs using `:param` syntax (`req.params`).
 4. **Query String Handling**: Extracting optional URL query parameters using `req.query`.
 5. **Catch-All 404 Handler**: Gracefully handling unmatched routes with custom 404 responses.
+
+---
+
+## 🚀 Key Features & Learning Objectives
+
+- **`express.Router()`**: Creating mini-applications that isolate student and course business logic.
+- **Root-level Route**: Exposing `/` with basic greeting confirmation.
+- **Parameterized Routes**: Extracting route params such as `/students/:id` and `/courses/:id`.
+- **Query Parameter Extraction**: Reading key-value pairs appended after `?` (e.g., `?name=John&description=NodeJS`).
+- **Middleware Chaining**: Enforcing strict top-to-bottom route evaluation order.
+- **Fallback 404 Middleware**: Returning HTTP status `404` with a readable error message for undefined routes.
