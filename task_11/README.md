@@ -41,3 +41,30 @@ task_11/
 - **`index1_task.js`**: Initializes Express instance, binds root path `/`, imports and mounts `./routes/student` at `/students` and `./routes/courses` at `/courses`, declares fallback 404 middleware, and starts HTTP server on port 4000.
 - **`routes/student.js`**: Exports an `express.Router()` handling student list retrieval and individual student lookups by dynamic ID.
 - **`routes/courses.js`**: Exports an `express.Router()` handling course catalog retrieval and individual course queries with description details.
+
+---
+
+## ⚙️ Prerequisites & Installation
+
+### Requirements:
+- **Node.js**: v14.x, v16.x, v18.x, v20.x, or later installed.
+- **npm**: Node Package Manager (comes bundled with Node.js).
+
+### Step-by-Step Installation:
+1. Navigate to the task directory:
+   ```bash
+   cd task_11
+   ```
+2. Initialize npm (if starting fresh):
+   ```bash
+   npm init -y
+   ```
+3. Install the Express package dependency:
+   ```bash
+   npm install express
+   ```
+4. Verify installation:
+   ```bash
+   node -v
+   npm list express
+   ```
