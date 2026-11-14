@@ -186,3 +186,16 @@ app.use("/courses", courseRoutes);
   ```text
   Course ID: 502, Name: ExpressMastery, Description: LearnRoutingInExpress
   ```
+
+---
+
+## 💡 Deep Dive: Route Parameters vs Query Parameters
+
+| Feature | Route Parameters (`req.params`) | Query Parameters (`req.query`) |
+| :--- | :--- | :--- |
+| **URL Syntax** | Part of URL path: `/students/:id` | Follows `?`: `/students?key=val` |
+| **Purpose** | Identifies a specific unique resource | Filters, sorts, searches, or provides optional data |
+| **Express Access** | `req.params.id` | `req.query.key` |
+| **Example URL** | `/courses/42` | `/courses?sort=asc&limit=10` |
+| **Definition** | Declared with a colon `:` in the route string | Automatically parsed by Express; no special path syntax required |
+| **Combined Usage**| `/courses/:id?name=React` captures `req.params.id` as `42` and `req.query.name` as `React` |
