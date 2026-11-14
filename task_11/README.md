@@ -227,3 +227,25 @@ app.use((req, res) => {
 
    PAGE NOT FOUND
    ```
+
+---
+
+## 🧪 Quick Test Matrix
+
+| URL / Request | Method | Parameters Parsed | Expected Response |
+| :--- | :--- | :--- | :--- |
+| `http://localhost:4000/` | `GET` | None | `Hello` |
+| `http://localhost:4000/students` | `GET` | None | `List all students: [object Object]` |
+| `http://localhost:4000/students/7?name=Raj` | `GET` | `id=7`, `name=Raj` | `Student ID: 7, Name: Raj` |
+| `http://localhost:4000/courses` | `GET` | None | `List all courses: [object Object]` |
+| `http://localhost:4000/courses/10?name=Node&description=Basics` | `GET` | `id=10`, `name=Node`, `description=Basics` | `Course ID: 10, Name: Node, Description: Basics` |
+| `http://localhost:4000/random-route` | `GET` | None | `PAGE NOT FOUND` (Status 404) |
+
+---
+
+## 📝 Summary of Concepts
+
+1. **Separation of Concerns**: Splitting routes into `routes/student.js` and `routes/courses.js` keeps `index1_task.js` lean and easy to maintain.
+2. **Path Prefixing**: `app.use("/prefix", router)` automatically prefixes all routes inside that router.
+3. **Parameter Handling**: Route parameters (`req.params`) handle resource hierarchy, while query strings (`req.query`) handle optional attributes.
+4. **Order of Execution**: Express middleware executes in declaration order, making fallback 404 routing straightforward and reliable.
